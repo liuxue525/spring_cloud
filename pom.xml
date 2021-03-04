@@ -10,6 +10,7 @@
       <module>student</module>
       <module>log</module>
       <module>hystrixDashboard</module>
+        <module>business</module>
     </modules>
 
     <parent>
