@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.studentApi.mapper.StuMapper">
+
+    <!--查询总条数-->
+    <select id="getCount" parameterType="com.fh.studentApi.model.vo.StudentVo" resultType="java.lang.Integer">
+        select count(*) from t_student where 4=4
+        <if test="name != null and name !='' ">
+            and name like concat('%',#{name},'%')
+        </if>
+        order by id desc
+    </select>
+
+    <!--查询分页数据-->
+    <select id="getData" parameterType="com.fh.studentApi.model.vo.StudentVo"
+            resultType="com.fh.studentApi.model.po.Student">
+        select * from t_student where 3=3
+        <if test="name != null and name !='' ">
+            and name like '%${name}%'
+        </if>
+        order by id desc
+        limit ${size*(current-1)},#{size}
+    </select>
+
+    <!--新增-->
+    <insert id="add" parameterType="com.fh.studentApi.model.po.Student" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        insert into t_student
+        (name,sex,birthday,score,hobby)
+        value
+        (#{name},#{sex},#{birthday},#{score},#{hobby})
+    </insert>
+
+    <!--根据ID查询-->
+    <select id="getDataById" parameterType="java.lang.Integer" resultType="com.fh.studentApi.model.po.Student">
+        select * from t_student where id = #{id}
+    </select>
+
+    <!--修改-->
+    <update id="update" parameterType="com.fh.studentApi.model.po.Student">
+        update t_student set name=#{name},sex=#{sex},birthday=#{birthday},score=#{score},hobby=#{hobby}
+        where id = #{id}
+    </update>
+
+    <!--删除-->
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from t_student where id=#{id}
+    </delete>
+
+</mapper>
