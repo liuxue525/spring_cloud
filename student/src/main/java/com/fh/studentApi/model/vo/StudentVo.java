@@ -9,11 +9,13 @@ import com.fh.studentApi.model.po.Student;
  * @Version 1.0
  **/
 
-public class StudentVo extends Student {
+public class StudentVo  {
 
     private Integer current;
 
     private Integer size;
+
+    private String name;
 
     public Integer getCurrent() {
         return current;
@@ -29,5 +31,13 @@ public class StudentVo extends Student {
 
     public void setSize(Integer size) {
         this.size = size;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -10,5 +10,5 @@ public interface UserService {
 
     Map queryUser(UserVo userVo);
 
-    Map queryUserByName(String name);
+    User queryUserByName(String name);
 }

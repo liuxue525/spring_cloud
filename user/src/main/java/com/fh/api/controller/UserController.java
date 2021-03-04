@@ -5,10 +5,7 @@ import com.fh.api.entity.po.User;
 import com.fh.api.entity.vo.UserVo;
 import com.fh.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +27,7 @@ public class UserController {
      */
 
     @PostMapping("addUser")
-    public Map addUser(User user){
+    public Map addUser(@RequestBody  User user){
         Map map = new HashMap();
 
         userService.addUser(user);
@@ -49,10 +46,10 @@ public class UserController {
 
 
     @PostMapping("queryUserByName")
-    public Map queryUserByName(String name){
+    public User queryUserByName(@RequestBody String name){
 
-        Map map=userService.queryUserByName(name);
+        User user=userService.queryUserByName(name);
 
-        return map;
+        return user;
     }
 }

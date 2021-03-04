@@ -61,16 +61,14 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Map queryUserByName(String name) {
+    public User queryUserByName(String name) {
 
         Map map=new HashMap();
-        //创建query对象
+               //创建query对象
         Query query=new Query(Criteria.where("name").is(name));
 
         User one = mongoTemplate.findOne(query, User.class);
 
-        map.put("data",one);
-
-        return map;
+        return one;
     }
 }
