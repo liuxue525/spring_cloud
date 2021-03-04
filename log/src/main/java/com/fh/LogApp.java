@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  *
  */
 @SpringBootApplication
-@EnableEurekaClient //声明Eureka客户端
+@EnableEurekaClient
 public class LogApp
 {
     public static void main( String[] args )
