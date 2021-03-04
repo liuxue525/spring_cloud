@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.mapper.LogMapper">
+
+    <select id="queryLogCount" parameterType="com.fh.entity.vo.PageVo" resultType="java.lang.Integer">
+      select count(*) from t_log where 4=4
+    </select>
+<!--   0 1 2 3 4 5 6 7 8 9         页数是从1开始    -->
+    <select id="queryLogPageVo" parameterType="com.fh.entity.vo.PageVo" resultType="com.fh.entity.po.Log">
+        select * from t_log where 3=3
+        limit ${size*(currPage-1)},#{size}
+    </select>
+
+<!--
+    <select id="selectUserByName" resultType="com.fh.entity.po.User">
+    select * from t_user where name=#{name}
+</select>
+-->
+    <insert id="addLog" parameterType="com.fh.entity.po.Log">
+        insert into t_log (content,ip,author) values (#{content},#{ip},#{author})
+    </insert>
+
+    <update id="updateLog" parameterType="com.fh.entity.po.Log">
+        update t_log set content=#{content},ip=#{ip},author=#{author} where id = #{id}
+    </update>
+
+    <delete id="deleteLog" parameterType="java.lang.Integer">
+        delete from t_log where id = #{id}
+    </delete>
+
+    <select id="queryLogById" resultType="com.fh.entity.po.Log" parameterType="java.lang.Integer">
+        select * from t_log where id = #{id}
+    </select>
+</mapper>
