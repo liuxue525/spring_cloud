@@ -5,6 +5,7 @@ import com.fh.api.entity.vo.UserVo;
 import com.fh.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,25 @@ public class UserServiceImpl implements UserService {
         //放入map
         map.put("count",count);
         map.put("data",users);
+        return map;
+    }
+
+    /**
+     * 根据用户名查询
+     * @param name
+     * @return
+     */
+    @Override
+    public Map queryUserByName(String name) {
+
+        Map map=new HashMap();
+        //创建query对象
+        Query query=new Query(Criteria.where("name").is(name));
+
+        User one = mongoTemplate.findOne(query, User.class);
+
+        map.put("data",one);
+
         return map;
     }
 }

@@ -46,4 +46,13 @@ public class UserController {
 
         return map;
     }
+
+
+    @PostMapping("queryUserByName")
+    public Map queryUserByName(String name){
+
+        Map map=userService.queryUserByName(name);
+
+        return map;
+    }
 }
